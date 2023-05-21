@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
-    def results
+def results
     @tweets = tweet.buscador(params[:termino])
-    @UserName = UserName.buscador(params[:termino])
-    @Description = Description.buscador(params[:termino])
+    @UserName = tweet.buscador(params[:termino])
+    @Description = tweet.buscador(params[:termino])
+end
 end

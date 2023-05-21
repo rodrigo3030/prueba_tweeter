@@ -1,15 +1,48 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Tweets</h1>
 
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-  <% end %>
-</div>
 
+<!-- Topbar search -->
+<%= form_tag('/search', options = {class: "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"}) do %>
+  <div class="input-group">
+    <%= text_field_tag("termino", value = nil, options = { class: "form-control bg-light border-0 small", placeholder: "search for..."}) %>
+    <div class="input-group-append">
+      <% submit_tag(value = "Buscar", options = { class: "btn btn-primary"}) do %>
+      <button class="btn btn-primary" type="button">    
+      <i class="fas fa-search fa-sm"></i>
+      <% end %>
+    </div> 
+  </div>
+<% end %>
 
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">UserName</th>
+    <th scope="col">Description</th>
+    <th scope="col" id="accion">Action</th>
+  </tr>
+</thead>
+
+<tbody>
+<% @tweets.each do |tweet| %>
+  <tr>
+      <th scope="row"><%= tweet.id %></th>
+      <td><%= tweet.UserName %></td>
+      <td><%= tweet.Description %></td>
+<td><%= link_to "Show this tweet", tweet %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<div class="contenedor">
+<div>
 <%= link_to "New tweet", new_tweet_path %>
+<div>
+
+<div>
+<%= link_to "ver más", tweets_path %>
+</div>

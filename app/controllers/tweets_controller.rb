@@ -10,6 +10,10 @@ class TweetsController < ApplicationController
   def show
   end
 
+  def index
+    @tweets = tweet.buscador(params[:termino])
+  end
+
   # GET /tweets/new
   def new
     @tweet = Tweet.new
