@@ -4,14 +4,13 @@ class TweetsController < ApplicationController
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
+    if params[:termino].present?
+        @tweets = @tweets.search_by_UserName(params[:termino])
+    end
   end
 
   # GET /tweets/1 or /tweets/1.json
   def show
-  end
-
-  def index
-    @tweets = tweet.buscador(params[:termino])
   end
 
   # GET /tweets/new

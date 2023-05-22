@@ -1,20 +1,12 @@
 <p style="color: green"><%= notice %></p>
 <h1>Tweets</h1>
 
-<div id="tweets">
+<form action="/tweets" method="get">
+<input type="text" name="termino">
+<button type="submit"> buscar </button>
+</form>
 
-<!-- Topbar search -->
-<%= form_tag('/search', options = {class: "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"}) do %>
-  <div class="input-group">
-    <%= text_field_tag("termino", value = nil, options = { class: "form-control bg-light border-0 small", placeholder: "search for..."}) %>
-    <div class="input-group-append">
-      <% submit_tag(value = "Buscar", options = { class: "btn btn-primary"}) do %>
-      <button class="btn btn-primary" type="button">    
-      <i class="fas fa-search fa-sm"></i>
-      <% end %>
-    </div> 
-  </div>
-<% end %>
+<div id="tweets">
 
 <table class="table table-striped">
 <thead>
